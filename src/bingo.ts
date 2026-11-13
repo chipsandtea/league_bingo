@@ -51,15 +51,15 @@ interface TierSpec {
 export const RANK_TIERS: readonly TierSpec[] = [
   { name: 'Unranked', tierKey: 'unranked', minPoints: 0 },
   { name: 'Iron', tierKey: 'iron', minPoints: 1 },
-  { name: 'Bronze', tierKey: 'bronze', minPoints: 175 },
-  { name: 'Silver', tierKey: 'silver', minPoints: 375 },
-  { name: 'Gold', tierKey: 'gold', minPoints: 625 },
-  { name: 'Platinum', tierKey: 'platinum', minPoints: 900 },
-  { name: 'Emerald', tierKey: 'emerald', minPoints: 1200 },
-  { name: 'Diamond', tierKey: 'diamond', minPoints: 1500 },
-  { name: 'Master', tierKey: 'master', minPoints: 1800 },
-  { name: 'Grandmaster', tierKey: 'grandmaster', minPoints: 2050 },
-  { name: 'Challenger', tierKey: 'challenger', minPoints: 2300 },
+  { name: 'Bronze', tierKey: 'bronze', minPoints: 200 },
+  { name: 'Silver', tierKey: 'silver', minPoints: 425 },
+  { name: 'Gold', tierKey: 'gold', minPoints: 725 },
+  { name: 'Platinum', tierKey: 'platinum', minPoints: 1050 },
+  { name: 'Emerald', tierKey: 'emerald', minPoints: 1400 },
+  { name: 'Diamond', tierKey: 'diamond', minPoints: 1750 },
+  { name: 'Master', tierKey: 'master', minPoints: 2100 },
+  { name: 'Grandmaster', tierKey: 'grandmaster', minPoints: 2400 },
+  { name: 'Challenger', tierKey: 'challenger', minPoints: 2700 },
 ];
 
 export function getRankTier(points: number): RankTier {

@@ -4,13 +4,13 @@ A zero-backend Best-of-5 watch-party Bingo webapp built with **Vite + Vanilla Ty
 
 ## Features
 - **Crash & Tab-Close Safe (`localStorage` + Backup Links):** Every square toggle and Game 1–5 board is saved automatically in your browser. Closing the tab or refreshing restores your exact cards, checked squares, streaks, and scores. Use **Backup / Move Link** to move your boards to another browser or device while keeping the main site URL clean for sharing with friends.
-- **Best-of-5 Series Game Switcher (`Game 1` – `Game 5`):** Each game of the series gets its own uniquely shuffled 5×5 card (24 prompts drawn from the 25-prompt pool + Center `FREE` space).
+- **Best-of-5 Series Game Switcher (`Game 1` – `Game 5`):** Each game of the series gets its own uniquely shuffled 5×5 card (24 prompts drawn from the 75-prompt Gen.G vs. BLG & Caedrel co-stream pool + Center `FREE` space).
 - **Cross-Game Bingo Streaks & High-Score System:**
   - **+25 pts** per checked prompt square
   - **+200 pts** for your first Bingo in a game, **+250 pts** for each combo line in the same game
   - **+500 pts** Pentakill bonus for clearing all 25 squares on a card
   - **🔥 Consecutive-Game Bingo Streaks:** Reaching Bingo in back-to-back games awards **+150 pts** (2G), **+300 pts** (3G), **+450 pts** (4G), and **+600 pts** (5G)
-  - **Series Scorecard & Calibrated Rank Tiers:** Climb from `Iron` (1) → `Bronze` (175) → `Silver` (375) → `Gold` (625) → `Platinum` (900) → `Emerald` (1,200) → `Diamond` (1,500) → `Master` (1,800) → `Grandmaster` (2,050) → `Challenger` (2,300+) and copy formatted Discord summaries.
+  - **Series Scorecard & Calibrated Rank Tiers:** Climb from `Iron` (1) → `Bronze` (200) → `Silver` (425) → `Gold` (725) → `Platinum` (1,050) → `Emerald` (1,400) → `Diamond` (1,750) → `Master` (2,100) → `Grandmaster` (2,400) → `Challenger` (2,700+) and copy formatted Discord summaries.
 
 ## Editing Prompts (`public/prompts.json`)
 Edit [`public/prompts.json`](./public/prompts.json) directly on GitHub or locally:
