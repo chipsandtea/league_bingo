@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gen.G vs BLG Worlds Finals Best-of-5 Watch Party Bingo — auto-saved cards, cross-game streaks, and series high scores."
+    />
+    <meta name="theme-color" content="#010A13" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Gen.G vs BLG • Worlds Finals Bingo</title>
+  </head>
+  <body>
+    <a href="#main-title" class="skip-link visually-hidden">Skip to bingo board</a>
+
+    <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="matchup-pill">
+          <span class="team-badge team-geng">GEN.G</span>
+          <span class="matchup-gem" aria-hidden="true">◆</span>
+          <span class="team-badge team-blg">BLG</span>
+          <span class="matchup-sep" aria-hidden="true">•</span>
+          <span id="event-subtitle" class="matchup-stage">WORLDS FINALS BO5</span>
+        </div>
+
+        <h1 id="main-title" class="site-title" tabindex="-1">WORLDS FINALS BINGO</h1>
+
+        <div class="hud-strip" role="group" aria-label="Live series score and streak">
+          <div class="hud-card">
+            <span id="hud-game-label" class="hud-label">Game 1 Pts</span>
+            <strong id="hud-game-points" class="hud-value">0</strong>
+          </div>
+
+          <div id="hud-streak-card" class="hud-card hud-streak-card">
+            <span class="hud-label">Bingo Streak</span>
+            <strong id="hud-streak-value" class="hud-value">0G</strong>
+            <span id="hud-streak-sub" class="hud-sub">Hit Bingo to start</span>
+          </div>
+
+          <button
+            type="button"
+            id="btn-hud-scorecard"
+            class="hud-card hud-card-interactive"
+            aria-describedby="hud-rank-pill"
+          >
+            <span class="hud-label">Series Total</span>
+            <strong id="hud-series-points" class="hud-value hud-value-gold">0</strong>
+            <span id="hud-rank-pill" class="rank-pill" data-tier="unranked">Unranked • View</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <div
+          id="game-tablist"
+          class="game-tablist"
+          role="tablist"
+          aria-label="Best of 5 series games"
+        >
+          <button
+            type="button"
+            role="tab"
+            id="tab-game-1"
+            class="game-tab"
+            data-game="1"
+            aria-selected="true"
+            tabindex="0"
+          >
+            <span class="tab-title">Game 1</span>
+            <span class="tab-meta" id="tab-meta-1">—</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-game-2"
+            class="game-tab"
+            data-game="2"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="tab-title">Game 2</span>
+            <span class="tab-meta" id="tab-meta-2">—</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-game-3"
+            class="game-tab"
+            data-game="3"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="tab-title">Game 3</span>
+            <span class="tab-meta" id="tab-meta-3">—</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-game-4"
+            class="game-tab"
+            data-game="4"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="tab-title">Game 4</span>
+            <span class="tab-meta" id="tab-meta-4">—</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-game-5"
+            class="game-tab"
+            data-game="5"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <span class="tab-title">Game 5</span>
+            <span class="tab-meta" id="tab-meta-5">—</span>
+          </button>
+        </div>
+
+        <div
+          id="game-panel"
+          class="game-panel"
+          role="tabpanel"
+          aria-labelledby="tab-game-1"
+        >
+          <div class="panel-inner">
+            <div id="milestone-banner" class="milestone-banner">
+              <span id="milestone-text" class="milestone-text">
+                Loading watch-party board…
+              </span>
+            </div>
+
+            <div class="board-shell">
+              <div
+                id="bingo-grid"
+                class="bingo-grid"
+                role="group"
+                aria-label="5 by 5 Bingo Board"
+              ></div>
+            </div>
+
+            <div id="feedback-bar" class="feedback-bar" hidden>
+              <span id="feedback-text"></span>
+            </div>
+
+            <div class="controls-section">
+              <div class="controls-row controls-primary">
+                <button type="button" id="btn-copy-game" class="btn btn-cyan">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" class="btn-icon">
+                    <path
+                      fill="currentColor"
+                      d="M6 2a2 2 0 0 0-2 2v1H3a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6Zm8 11h1V4H6v1h6a2 2 0 0 1 2 2v6ZM3 7v9h9V7H3Z"
+                    />
+                  </svg>
+                  <span id="btn-copy-game-label">Copy Game 1 Grid</span>
+                </button>
+
+                <button type="button" id="btn-open-scorecard" class="btn btn-gold">
+                  <svg aria-hidden="true" viewBox="0 0 20 20" class="btn-icon">
+                    <path
+                      fill="currentColor"
+                      d="M5 2a1 1 0 0 0-1 1v1H2.5A1.5 1.5 0 0 0 1 5.5v1A3.5 3.5 0 0 0 4.26 9.99 5.01 5.01 0 0 0 9 13.9V16H6.5a.75.75 0 0 0 0 1.5h7a.75.75 0 0 0 0-1.5H11v-2.1a5.01 5.01 0 0 0 4.74-3.91A3.5 3.5 0 0 0 19 6.5v-1A1.5 1.5 0 0 0 17.5 4H16V3a1 1 0 0 0-1-1H5Zm-1 3.5V8.3A2 2 0 0 1 2.5 6.5v-1H4Zm12 0h1.5v1A2 2 0 0 1 16 8.3V5.5Z"
+                    />
+                  </svg>
+                  <span>Series Scorecard</span>
+                </button>
+              </div>
+
+              <div class="controls-row controls-secondary">
+                <button type="button" id="btn-backup-link" class="btn btn-ghost">
+                  Backup / Move Link
+                </button>
+                <button type="button" id="btn-clear-marks" class="btn btn-ghost">
+                  Clear Marks
+                </button>
+                <button type="button" id="btn-new-card" class="btn btn-ghost">
+                  New Shuffled Card
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <p id="save-status" class="save-status">
+          <span class="save-dot" aria-hidden="true"></span>
+          <span id="save-status-text">Progress auto-saves locally on this browser — closing the tab is safe.</span>
+        </p>
+        <p class="footer-hint">
+          Tip: Press &amp; hold (mobile) or right-click (desktop) any square to view full size.
+        </p>
+      </footer>
+    </div>
+
+    <p class="visually-hidden">Screen reader status announcements</p>
+    <div id="sr-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Modal 1: Destructive Action Confirmation (Clear Marks / New Card) -->
+    <dialog id="confirm-dialog" class="hex-dialog" aria-labelledby="confirm-dialog-title">
+      <div class="dialog-body">
+        <h2 id="confirm-dialog-title" class="dialog-title">Confirm Action</h2>
+        <p id="confirm-dialog-desc" class="dialog-desc"></p>
+        <form method="dialog" class="dialog-actions">
+          <button type="submit" value="cancel" class="btn btn-ghost" autofocus>
+            Cancel
+          </button>
+          <button type="submit" value="confirm" id="confirm-dialog-submit" class="btn btn-danger">
+            Confirm
+          </button>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Modal 2: Square Prompt Full-Size Inspector -->
+    <dialog
+      id="preview-dialog"
+      class="hex-dialog"
+      closedby="any"
+      aria-labelledby="preview-dialog-title"
+    >
+      <div class="dialog-body">
+        <div class="dialog-eyebrow" id="preview-dialog-coords">Game 1 • Square</div>
+        <h2 id="preview-dialog-title" class="dialog-prompt-text">Prompt</h2>
+        <p id="preview-dialog-status" class="dialog-status-pill"></p>
+        <form method="dialog" class="dialog-actions">
+          <button type="submit" value="close" class="btn btn-ghost" autofocus>
+            Close
+          </button>
+          <button type="submit" value="toggle" id="preview-dialog-toggle" class="btn btn-cyan">
+            Mark Square
+          </button>
+        </form>
+      </div>
+    </dialog>
+
+    <!-- Modal 3: Series High-Score & Streak Scorecard -->
+    <dialog
+      id="scorecard-dialog"
+      class="hex-dialog hex-dialog-wide"
+      closedby="any"
+      aria-labelledby="scorecard-dialog-title"
+    >
+      <div class="dialog-body">
+        <div class="scorecard-header">
+          <div>
+            <div class="dialog-eyebrow">GEN.G vs BLG • BO5 LEADERBOARD CARD</div>
+            <h2 id="scorecard-dialog-title" class="dialog-title">Series Scorecard</h2>
+          </div>
+          <form method="dialog">
+            <button type="submit" value="close" class="icon-close-btn" aria-label="Close scorecard">
+              ✕
+            </button>
+          </form>
+        </div>
+
+        <div class="scorecard-hero">
+          <div class="scorecard-total-block">
+            <span class="scorecard-kicker">Total Series Score</span>
+            <strong id="sc-total-points" class="scorecard-big-score">0</strong>
+            <span id="sc-next-tier" class="scorecard-next-tier"></span>
+          </div>
+
+          <div class="scorecard-badges">
+            <div class="scorecard-stat">
+              <span class="scorecard-stat-label">Rank Tier</span>
+              <strong id="sc-rank-name" class="scorecard-stat-val">Unranked</strong>
+            </div>
+            <div class="scorecard-stat">
+              <span class="scorecard-stat-label">Best Streak</span>
+              <strong id="sc-best-streak" class="scorecard-stat-val">0 Games</strong>
+            </div>
+            <div class="scorecard-stat">
+              <span class="scorecard-stat-label">Total Bingos</span>
+              <strong id="sc-total-bingos" class="scorecard-stat-val">0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="scorecard-table-wrap">
+          <table class="scorecard-table">
+            <caption class="visually-hidden">
+              Points and streak breakdown across Games 1 to 5
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Game</th>
+                <th scope="col">Checked</th>
+                <th scope="col">Bingos</th>
+                <th scope="col">Streak</th>
+                <th scope="col" class="num-col">Points</th>
+              </tr>
+            </thead>
+            <tbody id="sc-table-body"></tbody>
+          </table>
+        </div>
+
+        <div class="scoring-rules">
+          <h3 class="scoring-rules-title">Scoring, Streaks &amp; Rank Ladder</h3>
+          <ul class="scoring-rules-list" role="list">
+            <li><strong>+25 pts</strong> per checked prompt square (FREE center = 0 pts)</li>
+            <li><strong>+200 pts</strong> for 1st Bingo in a game, <strong>+250 pts</strong> per extra line</li>
+            <li><strong>+500 pts</strong> Pentakill bonus for a full 25/25 Blackout</li>
+            <li>
+              <strong>🔥 Streak Bonus:</strong> Consecutive-game Bingos award
+              <strong>+150 pts</strong> (2G), <strong>+300 pts</strong> (3G),
+              <strong>+450 pts</strong> (4G), <strong>+600 pts</strong> (5G)!
+            </li>
+            <li>
+              <strong>🏆 Ranks:</strong> Iron (1) • Bronze (175) • Silver (375) • Gold (625) •
+              Platinum (900) • Emerald (1,200) • Diamond (1,500) • Master (1,800) •
+              Grandmaster (2,050) • <strong>Challenger (2,300+)</strong>
+            </li>
+          </ul>
+        </div>
+
+        <p id="sc-copy-feedback" class="sc-copy-feedback" hidden></p>
+
+        <div class="dialog-actions scorecard-footer">
+          <button type="button" id="btn-copy-scorecard" class="btn btn-gold">
+            Copy Series High Score for Discord
+          </button>
+          <form method="dialog">
+            <button type="submit" value="close" class="btn btn-ghost">Done</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

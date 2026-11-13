@@ -1,0 +1,33 @@
+{
+  "eventId": "worlds-finals-geng-vs-blg-v1",
+  "title": "WORLDS FINALS BINGO",
+  "subtitle": "GEN.G vs BLG • BEST OF 5 WATCH PARTY",
+  "freeSpace": "FREE • WORLDS FINALS",
+  "prompts": [
+    "First Blood before 5:00",
+    "Chovy up 20+ CS at 15:00",
+    "Bin gets a 1v1 side-lane solo kill",
+    "Canyon wins a 50/50 Smite fight",
+    "Knight gets a solo kill or escapes a gank",
+    "Ruler gets caught out of position",
+    "Gen.G scores an Ace",
+    "BLG scores an Ace",
+    "4+ player dive in bot lane before 14:00",
+    "Failed Flash into wall or instant death after Flash",
+    "Caster mentions \"Golden Road\" or legacy",
+    "Baron Nashor or Elder Dragon gets stolen",
+    "Technical pause or Chronobreak check",
+    "Gen.G gets First Tower Blood",
+    "BLG gets First Tower Blood",
+    "Uncontested Dragon Soul (4-0 drake sweep)",
+    "TP flank from behind turns a teamfight",
+    "Quadra Kill, Pentakill, or stolen Penta",
+    "Player survives a fight under 50 HP",
+    "Captain Jack Cleanse or QSS",
+    "Base race or backdoor TP attempt",
+    "Game goes past 38 minutes",
+    "Gen.G secures Baron Nashor",
+    "BLG secures Baron Nashor",
+    "Blind skillshot into fog of war gets a kill"
+  ]
+}
