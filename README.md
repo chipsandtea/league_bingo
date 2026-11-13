@@ -4,7 +4,7 @@ A zero-backend Best-of-5 watch-party Bingo webapp built with **Vite + Vanilla Ty
 
 ## Features
 - **Crash & Tab-Close Safe (`localStorage` + Backup Links):** Every square toggle and Game 1–5 board is saved automatically in your browser. Closing the tab or refreshing restores your exact cards, checked squares, streaks, and scores. Use **Backup / Move Link** to move your boards to another browser or device while keeping the main site URL clean for sharing with friends.
-- **Best-of-5 Series Game Switcher (`Game 1` – `Game 5`):** Each game of the series gets its own uniquely shuffled 5×5 card (24 prompts drawn from the 75-prompt Gen.G vs. BLG & Caedrel co-stream pool + Center `FREE` space).
+- **Best-of-5 Series Game Switcher (`Game 1` – `Game 5`):** Each game of the series gets its own uniquely shuffled 5×5 card (24 prompts drawn from the Gen.G vs. BLG & Caedrel co-stream prompt pool + Center `FREE` space).
 - **Cross-Game Bingo Streaks & High-Score System:**
   - **+25 pts** per checked prompt square
   - **+200 pts** for your first Bingo in a game, **+250 pts** for each combo line in the same game
